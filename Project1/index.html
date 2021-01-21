@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PLAN</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/vue@next"></script>
+ </head>
+ <body>
+  <header>2021 Spring Lesson Plan</header>
+  <div id ="app" class="container">
+   <div class="course--planner-app--container">
+   <div class="card">
+    <div class="user--action--container">
+     <div class="form-group">
+      <label>   You must choose 'Math', 'History', Technology','Agriculture'      </label>
+      <input type="text" v-model ="name"/>
+     </div>
+      <button class="btn-primary" @click = "addItem()">Add Lesson</button>
+     </div>
+     <div v-if="isAlert" :style="{color: 'blue'}"> This area must fill a lesson name </div>
+    </div>
+    <div class="card card-light mt-20">
+     <h3>Activated Lessons</h3>
+     <ul class="list mt-20">
+      <li class="lesson-item list-item bg-success" v-for="lesson in courseList" :key= "lesson.id"
+         :class="{'bg-success':lesson.lessonFinished, 'bg-danger':!lesson.lessonFinished}" >
+        <span >{{lesson.name}}</span>
+        <input type="checkbox" v-model = "lesson.lessonFinished"/>              
+       </li>
+     </ul>
+    </div>
+  <div class="mt-10">
+    <p>
+      <font size = "3">
+        <marquee align="bottom" width = "300" direction="right">
+          <font color = "Indigo" size ="4">
+            <small>You have {{courseList.length}} lesson/s.</small>
+          </font>
+          </marquee></font></p>
+   
+  </div>
+ </div>
+   </div>
+  <script src="app.js"></script>
+</body>
+</html>
